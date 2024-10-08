@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            text-align: center;
+        }
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .collection {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .details {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #e7f3fe;
+            border: 1px solid #b3d7ff;
+            border-radius: 5px;
+        }
+        .details img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Library Collection Navigation</h1>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search collection name..." onkeyup="searchCollections()">
+</div>
+
+<div id="collection1" class="collection" onclick="toggleDetails('details1')">Collection 1: Course Reserve</div>
+<div id="details1" class="details">
+    <img src="https://via.placeholder.com/300" alt="Course Reserve Image">
+    <p>Collection 1 Description: This is the course reserve area for students to borrow and reference materials. Navigation: Go right from the entrance.</p>
+</div>
+
+<div id="collection2" class="collection" onclick="toggleDetails('details2')">Collection 2: Self Checkout Machine</div>
+<div id="details2" class="details">
+    <img src="https://via.placeholder.com/300" alt="Self Checkout Machine Image">
+    <p>Collection 2 Description: This area has self-checkout machines for readers to quickly borrow and return books. Navigation: Go left from the entrance.</p>
+</div>
+
+<div id="collection3" class="collection" onclick="toggleDetails('details3')">Collection 3: PPL Collection</div>
+<div id="details3" class="details">
+    <img src="https://via.placeholder.com/300" alt="PPL Collection Image">
+    <p>Collection 3 Description: This area showcases a rich collection of personal learning materials. Navigation: Go straight from the entrance.</p>
+</div>
+
+<div id="collection4" class="collection" onclick="toggleDetails('details4')">Collection 4: Leisure Collection</div>
+<div id="details4" class="details">
+    <img src="https://via.placeholder.com/300" alt="Leisure Collection Image">
+    <p>Collection 4 Description: This area provides a variety of leisure books and magazines. Navigation: Go back from the entrance.</p>
+</div>
+
+<div id="collection5" class="collection" onclick="toggleDetails('details5')">Collection 5: Printers</div>
+<div id="details5" class="details">
+    <img src="https://via.placeholder.com/300" alt="Printers Image">
+    <p>Collection 5 Description: This area provides printers for readers to print materials. Navigation: Go right from the entrance.</p>
+</div>
+
+<script>
+    function toggleDetails(id) {
+        const detailDiv = document.getElementById(id);
+        if (detailDiv.style.display === "none" || detailDiv.style.display === "") {
+            detailDiv.style.display = "block";
+        } else {
+            detailDiv.style.display = "none";
+        }
+    }
+
+    function searchCollections() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const collections = document.querySelectorAll('.collection');
+
+        collections.forEach(collection => {
+            const collectionName = collection.textContent || collection.innerText;
+            if (collectionName.toLowerCase().indexOf(input) > -1) {
+                collection.style.display = "";
+            } else {
+                collection.style.display = "none";
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
